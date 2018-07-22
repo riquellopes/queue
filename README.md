@@ -1,7 +1,7 @@
 Queue
 =====
 
-Building an app to process the requests in background.
+Building an app to process the requests in background. This example app was building based on [presentation](https://speakerdeck.com/marcosinger/processando-analise-genetica-em-background-com-go).
 
 #### Link:
 

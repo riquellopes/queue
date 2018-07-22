@@ -1,0 +1,27 @@
+version: '2'
+services:
+    faktory:
+        container_name: queue
+        image: contribsys/faktory
+        ports:
+            - "7419:7419"
+            - "7420:7420"
+        expose:
+            - 7419
+            - 7420
+    web:
+        image: golang:1.10.3-alpine
+        ports:
+            - "5000:5000"
+        expose:
+            - 5000
+        volumes:
+            - .:/go/src/github.com/riquellopes/queue
+        working_dir: /go/src/github.com/riquellopes/queue
+        command: go run main.go
+        environment:
+            - FAKTORY_URL=tcp://faktory:7419
+        links:
+            - faktory
+        depends_on:
+            - faktory
